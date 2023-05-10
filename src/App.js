@@ -21,3 +21,7 @@ export default function App() {
     </div>
   );
 }
+
+//Store
+//Dispatch 
+// reducer

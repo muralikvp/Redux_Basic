@@ -5,14 +5,7 @@ export const COUNTER_DECREMENT = 'counter/decrement';
 const intialstate = {
   count: 0,
 };
-const increment = () => {
-  store.dispatch({ type: COUNTER_INCREMENT });
-  console.log(store.getstate().count);
-};
-const decrement = () => {
-  store.dispatch({ type: COUNTER_DECREMENT });
-  console.log(store.getstate().count);
-};
+
 const reducer = (state = intialstate, action) => {
   switch (action.type) {
     case COUNTER_INCREMENT: {
