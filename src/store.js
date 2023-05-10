@@ -5,15 +5,8 @@ export const COUNTER_DECREMENT = 'counter/decrement';
 const intialstate = {
   count: 0,
 };
-const increment = () => {
-  store.dispatch({ type: COUNTER_INCREMENT });
-  console.log(store.getstate().count);
-};
-const decrement = () => {
-  store.dispatch({ type: COUNTER_DECREMENT });
-  console.log(store.getstate().count);
-};
-const reducer = (state = intialstate, action) => {
+
+const countReducer = (state = intialstate, action) => {
   switch (action.type) {
     case COUNTER_INCREMENT: {
       return { ...state, count: state.count + 1 };
@@ -26,5 +19,28 @@ const reducer = (state = intialstate, action) => {
     }
   }
 };
-const store = redux.createStore(reducer);
+const testReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'push': {
+      const data = { ...state };
+      data.push(action.value);
+      return [...data];
+    }
+    case 'pop': {
+      const data = { ...state };
+      data.pop();
+      return [...data];
+    }
+    default: {
+      return state;
+    }
+  }
+};
+const rootReducer = (state = {}, action) => {
+  return {
+    counter: countReducer(state.counter, action),
+    tester: testReducer(state.tester, action),
+  };
+};
+const store = redux.createStore(rootReducer);
 export default store;
