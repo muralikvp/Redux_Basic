@@ -22,12 +22,12 @@ const countReducer = (state = intialstate, action) => {
 const testReducer = (state = [], action) => {
   switch (action.type) {
     case 'push': {
-      const data = { ...state };
+      const data = [ ...state ];
       data.push(action.value);
       return [...data];
     }
     case 'pop': {
-      const data = { ...state };
+      const data = [ ...state ];
       data.pop();
       return [...data];
     }
